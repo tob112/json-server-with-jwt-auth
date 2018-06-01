@@ -1,26 +1,26 @@
 // GET JSON file in args 
 const yargs = require('yargs');
 yargs.options({
-  port: {
-    alias: 'p',
-    description: 'Set port',
-    default: 3000
-  },
-  file: {
-    alias: 'f',
-    description: 'Set JSON File',
-    default: './json-samples/default.json'
-  },
-  authentication: {
-    alias: 'a',
-    description: 'Enable authenticaded routes',
-    default: 'true'
-  },
-  delay: {
-    alias: 'd',
-    description: 'Miliseconds delay before response',
-    default: '1500'
-  }
+    port: {
+        alias: 'p',
+        description: 'Set port',
+        default: 3000
+    },
+    file: {
+        alias: 'f',
+        description: 'Set JSON File',
+        default: './json-samples/default.json'
+    },
+    authentication: {
+        alias: 'a',
+        description: 'Enable authenticaded routes',
+        default: 'true'
+    },
+    delay: {
+        alias: 'd',
+        description: 'Miliseconds delay before response',
+        default: '1500'
+    }
 });
 
 console.log(yargs.argv);
@@ -38,8 +38,9 @@ server.use(middlewares);
 
 // configure user storage in memory
 const userStorage = require('./security/users-storage')({
-  email: 'tobi@tobi.de',
-  password: 'tobi'
+    email: 'tobi@tobi.de',
+    password: 'tobi',
+    name: 'Tobias Langer'
 });
 userStorage.logUsers();
 
@@ -53,8 +54,8 @@ server.post('/sign-in', register);
 
 // Auth middleware 
 if (yargs.argv.authentication === 'true') {
-  const authMiddleware = require('./middleware/auth-middleware');
-  server.use(authMiddleware);
+    const authMiddleware = require('./middleware/auth-middleware');
+    server.use(authMiddleware);
 }
 
 // delay middleware
@@ -68,7 +69,7 @@ server.get('/verify', verify);
 // Start JSON Server
 server.use(router);
 server.listen(yargs.argv.port, () => {
-  console.log(`
+    console.log(`
 JSON Server is running on port ${yargs.argv.port}
 http://localhost:${yargs.argv.port}
 `)

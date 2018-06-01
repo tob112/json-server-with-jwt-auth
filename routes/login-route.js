@@ -7,7 +7,8 @@ module.exports = (userStorage) => {
     delay(1000).then(() => {
       if (userStorage.userExists(session)) {
         console.log('Login Data Valid');
-        const token = jwt.tokenGeneration(session);
+
+        const token = jwt.tokenGeneration(userStorage.getUser(session.email)[0]);
         res.status(201).json({token: token});
       } else {
         console.log('Login attempt failed');

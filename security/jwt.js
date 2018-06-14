@@ -5,7 +5,7 @@ const secret = 'DesarrolloWeb.com/EscuelaIT'
 
 /** cifra el usuario durante un margen de tiempo */
 
-exports.tokenGeneration = (user) => jwt.sign(user, secret, { expiresIn: '10m' })
+exports.tokenGeneration = (user) => jwt.sign(user, secret, {  })
 
 /** verifica al usuario a partir del token  */
 exports.verify = (token) => {

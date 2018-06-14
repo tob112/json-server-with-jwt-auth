@@ -38,8 +38,9 @@ server.use(middlewares);
 
 // configure user storage in memory
 const userStorage = require('./security/users-storage')({
-  email: 'user@example.com',
-  password: '1234'
+  email: 'tobi@tobi.de',
+  password: 'tobi',
+    name : 'Tobias Langer'
 });
 userStorage.logUsers();
 
